@@ -65,14 +65,15 @@ class RealUniversityPolicyCrawler:
         os.makedirs('data', exist_ok=True)
         os.makedirs('data/raw_policies', exist_ok=True)
 
-    def search_university_policy(self, university_name, keyword):
+    def search_university_policy(self, university_name, keyword, university_url=''):
         """
         使用百度搜索查找高校政策
         :param university_name: 大学名称
         :param keyword: 搜索关键词
+        :param university_url: 大学官网URL
         :return: 搜索结果列表
         """
-        search_query = f"{university_name} {keyword}"
+        search_query = f"{university_name} {keyword} site:.edu.cn"
         encoded_query = quote(search_query)
 
         # 使用百度搜索
@@ -100,13 +101,17 @@ class RealUniversityPolicyCrawler:
 
                     # 过滤相关结果
                     if self._is_relevant_result(title, abstract, university_name):
+                        priority = self._get_url_priority(url, university_url)
                         results.append({
                             'title': title,
                             'url': url,
-                            'abstract': abstract
+                            'abstract': abstract,
+                            'priority': priority
                         })
 
-            return results[:3]  # 只取前3个结果
+            # 按优先级排序
+            results.sort(key=lambda x: x['priority'], reverse=True)
+            return results[:5]  # 取前5个结果（增加候选）
 
         except Exception as e:
             logging.error(f"搜索失败 {university_name} - {keyword}: {str(e)}")
@@ -127,6 +132,39 @@ class RealUniversityPolicyCrawler:
         ]
 
         return any(keyword in text for keyword in relevant_keywords)
+
+    def _get_url_priority(self, url, university_url):
+        """
+        评估URL优先级，优先选择学校官网
+        :return: 优先级分数，分数越高优先级越高
+        """
+        score = 0
+        url_lower = url.lower()
+
+        # 提取学校官网域名
+        from urllib.parse import urlparse
+        uni_domain = urlparse(university_url).netloc
+        if uni_domain:
+            # 去掉www.
+            uni_domain = uni_domain.replace('www.', '')
+            if uni_domain in url_lower:
+                score += 100  # 学校官网最高优先级
+
+        # 教育机构域名优先
+        if '.edu.cn' in url_lower:
+            score += 50
+
+        # 政府域名次优先
+        if '.gov.cn' in url_lower:
+            score += 30
+
+        # 降低新闻媒体网站优先级
+        news_sites = ['sohu.com', 'sina.com', '163.com', 'qq.com', 'baidu.com',
+                     'toutiao.com', 'ifeng.com', 'netease.com', 'tencent.com']
+        if any(site in url_lower for site in news_sites):
+            score -= 50
+
+        return score
 
     def fetch_page_content(self, url):
         """
@@ -189,21 +227,24 @@ class RealUniversityPolicyCrawler:
         except:
             return None
 
-    def extract_policy_info(self, content, title, university_name):
+    def extract_policy_info(self, content, title, university_name, url=''):
         """
         从内容中提取政策信息
         :param content: 网页文本内容
         :param title: 标题
         :param university_name: 大学名称
+        :param url: 网页URL
         :return: 政策信息字典
         """
         if not content or len(content) < 100:
             return None
 
-        # 提取日期
-        date_pattern = r'(\d{4})[-年](\d{1,2})[-月](\d{1,2})'
-        date_match = re.search(date_pattern, content[:500])
-        date = f"{date_match.group(1)}-{date_match.group(2).zfill(2)}-{date_match.group(3).zfill(2)}" if date_match else '未知'
+        # 检查内容质量
+        if not self._is_quality_content(content, title):
+            return None
+
+        # 提取日期（多种模式）
+        date = self._extract_date(content, title)
 
         # 分类
         category = self._classify_policy(title, content)
@@ -222,8 +263,63 @@ class RealUniversityPolicyCrawler:
             'date': date,
             'category': category,
             'target_role': target_role,
-            'content': content
+            'content': content,
+            'url': url
         }
+
+    def _is_quality_content(self, content, title):
+        """检查内容质量"""
+        # 检查是否包含太多无关内容
+        bad_indicators = [
+            '返回搜狐，查看更多',
+            '特别声明：以上内容',
+            '为自媒体平台',
+            '仅提供信息存储服务',
+            '阅读下一篇',
+            '下载网易新闻客户端'
+        ]
+
+        # 如果内容主要是这些无关文本，则质量不合格
+        bad_count = sum(1 for indicator in bad_indicators if indicator in content[:500])
+        if bad_count >= 2:
+            return False
+
+        # 检查有效内容比例
+        effective_content = content[:1000]
+        # 至少应该包含一些政策相关词汇
+        policy_words = ['政策', '规定', '办法', '通知', '要求', '管理', '使用', '规范', '指南']
+        if not any(word in effective_content for word in policy_words):
+            return False
+
+        return True
+
+    def _extract_date(self, content, title):
+        """提取日期（多种模式）"""
+        # 尝试多种日期格式
+        date_patterns = [
+            r'(\d{4})[-年/.](\d{1,2})[-月/.](\d{1,2})',  # 2024-01-01, 2024年1月1日
+            r'(\d{4})[-年/.](\d{1,2})',  # 2024-01, 2024年1月
+        ]
+
+        # 先在标题中查找
+        for pattern in date_patterns:
+            match = re.search(pattern, title)
+            if match:
+                if len(match.groups()) == 3:
+                    return f"{match.group(1)}-{match.group(2).zfill(2)}-{match.group(3).zfill(2)}"
+                else:
+                    return f"{match.group(1)}-{match.group(2).zfill(2)}-01"
+
+        # 在内容前1000字符中查找
+        for pattern in date_patterns:
+            match = re.search(pattern, content[:1000])
+            if match:
+                if len(match.groups()) == 3:
+                    return f"{match.group(1)}-{match.group(2).zfill(2)}-{match.group(3).zfill(2)}"
+                else:
+                    return f"{match.group(1)}-{match.group(2).zfill(2)}-01"
+
+        return '未知'
 
     def _classify_policy(self, title, content):
         """政策分类"""
@@ -268,10 +364,10 @@ class RealUniversityPolicyCrawler:
 
         # 尝试不同的关键词搜索
         for keyword in self.keywords[:2]:  # 只用前2个关键词避免请求过多
-            search_results = self.search_university_policy(university_name, keyword)
+            search_results = self.search_university_policy(university_name, keyword, university_url)
 
             for result in search_results:
-                logging.info(f"  找到结果: {result['title']}")
+                logging.info(f"  找到结果: {result['title'][:60]}... (优先级: {result.get('priority', 0)})")
 
                 # 获取页面内容
                 content = self.fetch_page_content(result['url'])
@@ -279,16 +375,19 @@ class RealUniversityPolicyCrawler:
                     policy_info = self.extract_policy_info(
                         content,
                         result['title'],
-                        university_name
+                        university_name,
+                        result['url']
                     )
 
                     if policy_info and len(policy_info['content']) > 200:
                         found_policies.append(policy_info)
-                        logging.info(f"  ✓ 成功提取政策: {policy_info['title']}")
+                        logging.info(f"  ✓ 成功提取政策: {policy_info['title'][:60]}...")
 
                         # 每个学校最多找2份政策
                         if len(found_policies) >= 2:
                             break
+                    else:
+                        logging.info(f"  ✗ 内容质量不合格，跳过")
 
             if found_policies:
                 break  # 找到政策就不继续其他关键词了
@@ -311,16 +410,17 @@ class RealUniversityPolicyCrawler:
 
         # 保存为单独的文本文件
         for i, policy in enumerate(policies, 1):
-            # 清理文件名中的特殊字符
-            safe_title = re.sub(r'[\\/:*?"<>|]', '_', policy['title'][:50])
+            # 清理文件名中的特殊字符，保留完整标题用于内容
+            safe_title = re.sub(r'[\\/:*?"<>|]', '_', policy['title'][:80])
             filename = f"data/raw_policies/{i}_{policy['university']}_{safe_title}.txt"
 
             with open(filename, 'w', encoding='utf-8') as f:
                 f.write(f"高校: {policy['university']}\n")
-                f.write(f"标题: {policy['title']}\n")
+                f.write(f"标题: {policy['title']}\n")  # 保存完整标题
                 f.write(f"日期: {policy['date']}\n")
                 f.write(f"类别: {policy['category']}\n")
                 f.write(f"适用对象: {policy['target_role']}\n")
+                f.write(f"来源URL: {policy.get('url', '未知')}\n")
                 f.write(f"\n内容:\n{policy['content']}\n")
 
         logging.info(f"成功保存 {len(policies)} 份政策文件")

@@ -1,0 +1,64 @@
+高校: 中国人民大学
+标题: ...智能监管政策文件概览 - 电子文件管理研究中心 – 中国人民大学
+日期: 2017-07-08
+类别: 科研管理
+适用对象: 全体师生
+来源URL: http://www.baidu.com/link?url=H0mwnRSMehBR_VsElbHudTo46qkl-wYEAoFj0Uf2mAmrAFV8U-S_HHnVKPTaIRMnj5V5FXonXAM_T-uDDOo33a
+
+内容:
+行业动态
+主页
+新闻公告
+中心新闻
+活动公告
+学术动态
+行业动态
+随着科技的飞速发展，人工智能技术正日益成为推动社会进步和经济发展的重要引擎。然而，智能技术的发展速度也带来了诸多复杂性和不确定性。面对充满巨大潜力和风险的技术，各国纷纷制定并调整相关政策，以确保科技的合理应用，最大限度地促进安全与创新的平衡。于档案领域而言，人工智能技术在档案分类、鉴定、开放审核、开发利用等环节在的应用能够在一定程度上提高档案工作的效率，但也面临着如隐私保护、数据安全、算法公正性等一系列问题。档案工作者应当积极关注人工智能监管相关政策，促进人工智能技术在档案领域的合法合规应用。本期推文中，快随小编一起来学习与人工智能监管相关的国内外政策文件吧！
+1
+中国：《新一代人工智能发展规划》
+《新一代人工智能发展规划》由国务院于2017年7月8日印发并实施。该政策对于抢抓人工智能发展的重大战略机遇，构筑我国人工智能发展的先发优势，加快建设创新型国家和世界科技强国具有重要意义。这一规划是我国在人工智能领域的第一个系统部署文件，也是面向未来打造我国先发优势的一个指导性文件，对2030年我国新一代人工智能发展的总体思路、战略目标和主要任务、保障措施进行了系统的规划和部署。
+原文链接：https://www.gov.cn/zhengce/content/2017-07/20/content_5211996.htm
+2
+中国：《生成式人工智能服务管理暂行办法》
+由国家互联网信息办公室等七部门联合发布的《生成式人工智能服务管理暂行办法》于2023年8月15日正式施行，这是我国首个针对生成式人工智能产业的规范性政策。该办法旨在促进生成式人工智能的健康发展和规范应用，维护国家安全和社会公共利益，保护公民、法人和其他组织的合法权益。
+原文链接：http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm
+3
+美国：《认知技术白皮书：物联网、机器人流程自动化、机器学习和人工智能对文件管理的影响》
+2020年10月，美国国家档案与文件署（National Archives and Records Administration，NARA）发布《认知技术白皮书：物联网、机器人流程自动化、机器学习和人工智能对文件管理的影响》（Cognitive Technologies White Paper Records Management Implications for Internet of Things, Robotic Process Automation, Machine Learning, and Artificial Intelligence）（以下简称《白皮书》），对物联网（Internet of Things，IoT）技术、机器人流程自动化（Robotic Process Automation，RPA）技术、机器学习（Machine Learning，ML）技术和人工智能（Artificial Intelligence，AI）技术进行了审查和分析，提供了基本描述、列举了它们各自应用的示例、介绍了影响这些技术的若干因素。并进一步探讨了当这些技术相互结合时，如何将其能力发挥到最大。
+此外，《白皮书》还分析了认知技术对文件管理的影响，描述了影响联邦档案和数据创建与管理的现有标准和政策，并讨论了人工智能决策以及潜在的偏见和道德问题。
+原文链接：https://www.archives.gov/files/records-mgmt/policy/nara-cognitive-technologies-whitepaper.pdf
+4
+美国：《关于安全、可靠、值得信赖地开发和使用人工智能的行政命令》
+2023年10月30日，美国总统拜登签署颁布《关于安全、可靠、值得信赖地开发和使用人工智能的行政命令》（Executive Order on the Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence）（以下简称《行政令》）。《行政令》采取了基于风险的监管原则，关注高风险AI系统并制定了具体的监管准则，针对新出现的生成式AI技术引入了对基础模型的披露或测试要求，旨在降低AI在使用过程中的各种风险，促进安全、负责地管理人工智能的开发和使用，明确了美国政府对待人工智能的政策法制框架。
+原文链接：https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/
+5
+英国：《促进创新的人工智能监管方法》
+2023年3月29日，英国发布《促进创新的人工智能监管方法》（A pro-innovation approach to AI regulation）（以下简称“方法”），提出其基于原则的人工智能治理方法，以增强企业和群众使用人工智能的意愿，同时为行业提供明确一致的监管方法。
+在该方法中，英国提出了人工智能在各部门的开发和使用中都应遵守的五项原则，日后将由各监管部门根据具体情况在五项原则的基础上针对各领域的最佳实践发布指南。此外，该方法特别强调政府和行业、企业等多主体开展协同治理的重要性，以及加强人工智能治理全球合作和互操作性的重要性，以尽快实现英国在人工智能领域的全球领导者地位。
+原文链接：https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1176103/a-pro-innovation-approach-to-ai-regulation-amended-web-ready.pdf
+6
+加拿大：《人工智能和数据法案》
+加拿大是世界上最早提出监管人工智能的法律的国家之一。2022年7月，加拿大创新、科学和经济发展部（ISED）拟议了《人工智能和数据法案》（Artificial Intelligence and Data Act，AIDA）。该法案是《2022年数字宪章实施法》的一部分，旨在引导人工智能创新朝着积极的方向发展，并鼓励加拿大人和加拿大企业负责任地使用人工智能技术。政府将组织公开征求意见，收集加拿大各地利益相关方的意见，以确保法规能实现符合加拿大价值观的成果。AIDA目前仍处于初审阶段。
+原文链接：https://ised-isde.canada.ca/site/innovation-better-canada/en/artificial-intelligence-and-data-act-aida-companion-document
+7
+法国：《人工智能行动计划》
+鉴于个人数据保护对于设计和使用人工智能技术而言是一个重大问题，法国国家信息和自由委员会（CNIL）于2023年5月16日发布了《人工智能行动计划》（Intelligence artificielle : le plan d’action de la CNIL）（以下简称“行动计划”），旨在规范生成式人工智能的发展。
+该行动计划面对人工智能的快速发展以及当前与生成式人工智能有关的争议性事件，主要围绕四个目标展开。一是了解人工智能系统的运作方式及其对个人的影响；二是保护并监督尊重个人数据的人工智能发展；三是集中力量支持法国和欧洲人工智能生态系统中的创新者；四是审计、监管人工智能系统并保护个人隐私。
+原文链接：https://www.cnil.fr/fr/intelligenceartificielleleplandactiondelacnil
+8
+欧盟：《人工智能法案》
+布鲁塞尔当地时间2023年12月8日晚，欧洲议会、欧盟成员国和欧盟委员会三方就《人工智能法案》（Artificial Intelligence ACT）达成协议。这一法案将成为全球首部人工智能领域的全面监管法规，将有助于欧洲“在全球人工智能竞赛中领跑”。
+该法案按照不同的风险类别为人工智能技术应用进行了分类，从“不可接受”，也就是必须禁止的技术，到高、中、低风险的人工智能等，通过识别不同风险来进行监管。包括ChatGPT在内的人工智能大语言模型，法案中也做了明确的监管规定，必须满足基本的透明度要求，相关技术将会被更严格地监管。
+原文链接：https://news.cctv.com/2023/12/11/ARTIguHKWcPWpFWZKgQ8KzuZ231211.shtml
+综合各国和国际机构针对AI治理的文件，可追溯性、可解释性、数据和隐私的保护、风险意识、人类主体意识都得到强调。随着AI的发展，其在全球的影响范围更加深入。全球应加强AI监管合作，完善现有机制，提升监管制度的灵活性，以适应AI技术发展迭代快、威胁方式不稳定等特点。同时，各国政府、国际机构、企业也应承担相应责任，共同促进新兴技术健康发展。
+编辑：田国庆
+校对：武晓璇 许晓彤 张茜雅
+排版：田静静
+审核：钱毅
+本期学生研究员风采
+田国庆
+张茜雅
+武晓璇
+田静静
+电子文件管理研究中心
+© 2010 - 2025 All Right Reserved

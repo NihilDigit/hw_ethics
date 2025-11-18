@@ -1,0 +1,247 @@
+[
+  {
+    "university": "西安交通大学",
+    "category": "教学管理",
+    "dominant_topic_id": 2,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.9997669458389282,
+    "all_topics": [
+      [
+        2,
+        0.9997669458389282
+      ]
+    ]
+  },
+  {
+    "university": "西安交通大学",
+    "category": "综合管理",
+    "dominant_topic_id": 2,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.9997700452804565,
+    "all_topics": [
+      [
+        2,
+        0.9997700452804565
+      ]
+    ]
+  },
+  {
+    "university": "西安电子科技大学",
+    "category": "教学管理",
+    "dominant_topic_id": 2,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.9996601939201355,
+    "all_topics": [
+      [
+        2,
+        0.9996601939201355
+      ]
+    ]
+  },
+  {
+    "university": "中国农业大学",
+    "category": "教师指导",
+    "dominant_topic_id": 2,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.9989012479782104,
+    "all_topics": [
+      [
+        2,
+        0.9989012479782104
+      ]
+    ]
+  },
+  {
+    "university": "北京外国语大学",
+    "category": "伦理规范",
+    "dominant_topic_id": 1,
+    "dominant_topic_label": "伦理与规范",
+    "dominant_topic_prob": 0.9994162321090698,
+    "all_topics": [
+      [
+        1,
+        0.9994162321090698
+      ]
+    ]
+  },
+  {
+    "university": "华北电力大学",
+    "category": "伦理规范",
+    "dominant_topic_id": 0,
+    "dominant_topic_label": "AI工具使用",
+    "dominant_topic_prob": 0.8205161690711975,
+    "all_topics": [
+      [
+        0,
+        0.8205161690711975
+      ],
+      [
+        3,
+        0.1793559342622757
+      ]
+    ]
+  },
+  {
+    "university": "大连理工大学",
+    "category": "伦理规范",
+    "dominant_topic_id": 0,
+    "dominant_topic_label": "AI工具使用",
+    "dominant_topic_prob": 0.5588807463645935,
+    "all_topics": [
+      [
+        0,
+        0.5588807463645935
+      ],
+      [
+        4,
+        0.44064685702323914
+      ]
+    ]
+  },
+  {
+    "university": "东北大学",
+    "category": "教学管理",
+    "dominant_topic_id": 3,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.8212578296661377,
+    "all_topics": [
+      [
+        2,
+        0.17840838432312012
+      ],
+      [
+        3,
+        0.8212578296661377
+      ]
+    ]
+  },
+  {
+    "university": "中国人民大学",
+    "category": "科研管理",
+    "dominant_topic_id": 0,
+    "dominant_topic_label": "AI工具使用",
+    "dominant_topic_prob": 0.9997866153717041,
+    "all_topics": [
+      [
+        0,
+        0.9997866153717041
+      ]
+    ]
+  },
+  {
+    "university": "上海交通大学",
+    "category": "教学管理",
+    "dominant_topic_id": 3,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.63585364818573,
+    "all_topics": [
+      [
+        0,
+        0.3635229766368866
+      ],
+      [
+        3,
+        0.63585364818573
+      ]
+    ]
+  },
+  {
+    "university": "上海交通大学",
+    "category": "教学管理",
+    "dominant_topic_id": 3,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.9995162487030029,
+    "all_topics": [
+      [
+        3,
+        0.9995162487030029
+      ]
+    ]
+  },
+  {
+    "university": "清华大学",
+    "category": "教学管理",
+    "dominant_topic_id": 3,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.9998190402984619,
+    "all_topics": [
+      [
+        3,
+        0.9998190402984619
+      ]
+    ]
+  },
+  {
+    "university": "华东师范大学",
+    "category": "伦理规范",
+    "dominant_topic_id": 1,
+    "dominant_topic_label": "伦理与规范",
+    "dominant_topic_prob": 0.999236524105072,
+    "all_topics": [
+      [
+        1,
+        0.999236524105072
+      ]
+    ]
+  },
+  {
+    "university": "上海科技大学",
+    "category": "教学管理",
+    "dominant_topic_id": 0,
+    "dominant_topic_label": "AI工具使用",
+    "dominant_topic_prob": 0.4216513931751251,
+    "all_topics": [
+      [
+        0,
+        0.4216513931751251
+      ],
+      [
+        3,
+        0.3683878183364868
+      ],
+      [
+        4,
+        0.20958782732486725
+      ]
+    ]
+  },
+  {
+    "university": "南京医科大学",
+    "category": "教学管理",
+    "dominant_topic_id": 4,
+    "dominant_topic_label": "技术管理与平台",
+    "dominant_topic_prob": 0.9997684359550476,
+    "all_topics": [
+      [
+        4,
+        0.9997684359550476
+      ]
+    ]
+  },
+  {
+    "university": "中国科学技术大学",
+    "category": "综合管理",
+    "dominant_topic_id": 0,
+    "dominant_topic_label": "AI工具使用",
+    "dominant_topic_prob": 0.9998661875724792,
+    "all_topics": [
+      [
+        0,
+        0.9998661875724792
+      ]
+    ]
+  },
+  {
+    "university": "江南大学",
+    "category": "教学管理",
+    "dominant_topic_id": 1,
+    "dominant_topic_label": "伦理与规范",
+    "dominant_topic_prob": 0.9996257424354553,
+    "all_topics": [
+      [
+        1,
+        0.9996257424354553
+      ]
+    ]
+  }
+]

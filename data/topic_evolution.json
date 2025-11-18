@@ -1,0 +1,104 @@
+[
+  {
+    "date": "2017-07-08",
+    "university": "中国人民大学",
+    "topic": "AI工具使用",
+    "topic_id": 0
+  },
+  {
+    "date": "2023-12-15",
+    "university": "上海交通大学",
+    "topic": "教学应用与创新",
+    "topic_id": 3
+  },
+  {
+    "date": "2024-03-20",
+    "university": "西安交通大学",
+    "topic": "教学应用与创新",
+    "topic_id": 2
+  },
+  {
+    "date": "2024-04-12",
+    "university": "上海科技大学",
+    "topic": "AI工具使用",
+    "topic_id": 0
+  },
+  {
+    "date": "2024-04-15",
+    "university": "上海交通大学",
+    "topic": "教学应用与创新",
+    "topic_id": 3
+  },
+  {
+    "date": "2024-04-22",
+    "university": "中国农业大学",
+    "topic": "教学应用与创新",
+    "topic_id": 2
+  },
+  {
+    "date": "2024-07-01",
+    "university": "华东师范大学",
+    "topic": "伦理与规范",
+    "topic_id": 1
+  },
+  {
+    "date": "2024-09-03",
+    "university": "东北大学",
+    "topic": "教学应用与创新",
+    "topic_id": 3
+  },
+  {
+    "date": "2025-02-25",
+    "university": "中国科学技术大学",
+    "topic": "AI工具使用",
+    "topic_id": 0
+  },
+  {
+    "date": "2025-03-11",
+    "university": "西安电子科技大学",
+    "topic": "教学应用与创新",
+    "topic_id": 2
+  },
+  {
+    "date": "2025-03-20",
+    "university": "西安交通大学",
+    "topic": "教学应用与创新",
+    "topic_id": 2
+  },
+  {
+    "date": "2025-03-23",
+    "university": "江南大学",
+    "topic": "伦理与规范",
+    "topic_id": 1
+  },
+  {
+    "date": "2025-05-21",
+    "university": "华北电力大学",
+    "topic": "AI工具使用",
+    "topic_id": 0
+  },
+  {
+    "date": "7062-20-01",
+    "university": "南京医科大学",
+    "topic": "技术管理与平台",
+    "topic_id": 4
+  },
+  {
+    "date": "未知",
+    "university": "北京外国语大学",
+    "topic": "伦理与规范",
+    "topic_id": 1
+  },
+  {
+    "date": "未知",
+    "university": "大连理工大学",
+    "topic": "AI工具使用",
+    "topic_id": 0
+  },
+  {
+    "date": "未知",
+    "university": "清华大学",
+    "topic": "教学应用与创新",
+    "topic_id": 3
+  }
+]

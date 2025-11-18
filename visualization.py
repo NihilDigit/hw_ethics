@@ -15,9 +15,24 @@ import networkx as nx
 from sklearn.cluster import KMeans
 from collections import Counter
 import os
+from matplotlib.font_manager import FontProperties, fontManager
 
-# 设置中文字体
-plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'SimHei', 'Arial Unicode MS']
+# 注册思源黑体字体
+font_path = os.path.join(os.path.dirname(__file__), 'fonts', 'SourceHanSansSC-Regular.otf')
+font_path_bold = os.path.join(os.path.dirname(__file__), 'fonts', 'SourceHanSansSC-Bold.otf')
+
+if os.path.exists(font_path):
+    # 添加字体到系统
+    fontManager.addfont(font_path)
+    fontManager.addfont(font_path_bold)
+    # 设置中文字体为思源黑体
+    plt.rcParams['font.sans-serif'] = ['Source Han Sans SC', 'DejaVu Sans']
+    print("成功加载思源黑体字体")
+else:
+    # 回退到默认字体
+    plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'SimHei', 'Arial Unicode MS']
+    print("警告: 未找到思源黑体字体，使用默认字体")
+
 plt.rcParams['axes.unicode_minus'] = False
 
 class Visualizer:

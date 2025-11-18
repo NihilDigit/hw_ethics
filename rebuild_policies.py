@@ -72,7 +72,7 @@ def main():
             failed_unis.append(uni)
 
     final_report = {
-        'total_universities': 146,
+        'total_universities': 147,
         'successful': len(uni_count),
         'failed': len(failed_unis),
         'total_policies': len(policies),
@@ -82,7 +82,7 @@ def main():
     with open('data/crawler_report_corrected.json', 'w', encoding='utf-8') as f:
         json.dump(final_report, f, ensure_ascii=False, indent=2)
 
-    print(f"\n最终统计: {len(uni_count)}/146 所大学成功爬取")
+    print(f"\n最终统计: {len(uni_count)}/147 所大学成功爬取")
     print(f"失败: {len(failed_unis)} 所大学")
 
 if __name__ == '__main__':

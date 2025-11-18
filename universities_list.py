@@ -195,7 +195,7 @@ DOUBLE_FIRST_CLASS_UNIVERSITIES = {
     '中国地质大学（北京）': 'https://www.cugb.edu.cn',
     '国防科技大学': 'https://www.nudt.edu.cn',
     '海军军医大学': 'https://www.smmu.edu.cn',
-    # '空军军医大学': 'https://www.fmmu.edu.cn',  # 官网可能有变化
+    '空军军医大学': 'https://www.fmmu.edu.cn',
 }
 
 def get_all_universities():

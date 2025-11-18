@@ -21,7 +21,10 @@ class TextPreprocessor:
             '自己', '这', '那', '什么', '等', '及', '或', '与', '并', '为', '以', '对', '中',
             '而', '从', '由', '但', '被', '将', '其', '可', '等', '于', '之', '及', '应',
             '应当', '应该', '需要', '进行', '通过', '开展', '实施', '加强', '提高', '建立',
-            '完善', '推进', '促进', '各', '有关', '相关', '主要', '重要', '基本', '全面'
+            '完善', '推进', '促进', '各', '有关', '相关', '主要', '重要', '基本', '全面',
+            # 添加网络相关停用词
+            'http', 'https', 'www', 'com', 'cn', 'edu', 'net', 'org', 'html', 'htm',
+            'php', 'asp', 'jsp', 'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'
         ])
 
         # 添加自定义词典
@@ -69,11 +72,26 @@ class TextPreprocessor:
             return json.load(f)
 
     def clean_text(self, text):
-        """清理文本:去除数字、标点等"""
+        """清理文本:去除URL、邮箱、数字、标点等"""
+        # 去除URL
+        text = re.sub(r'https?://[^\s]+', ' ', text)
+        text = re.sub(r'www\.[^\s]+', ' ', text)
+
+        # 去除邮箱地址
+        text = re.sub(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', ' ', text)
+
+        # 去除文件路径和扩展名
+        text = re.sub(r'\.(com|cn|edu|net|org|gov|html|htm|php|asp|jsp|pdf|doc|docx|xls|xlsx|ppt|pptx)\b', ' ', text, flags=re.IGNORECASE)
+
+        # 去除数字（包括年份、日期等）
+        text = re.sub(r'\d+', ' ', text)
+
         # 保留中文、英文字母
         text = re.sub(r'[^\u4e00-\u9fa5a-zA-Z]', ' ', text)
+
         # 去除多余空格
         text = re.sub(r'\s+', ' ', text)
+
         return text.strip()
 
     def segment_text(self, text):

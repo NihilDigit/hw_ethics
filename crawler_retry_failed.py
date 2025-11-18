@@ -143,7 +143,7 @@ def main():
                 'new_policies': len(new_policies)
             },
             'total': {
-                'universities': 146,
+                'universities': 147,
                 'successful': total_successful,
                 'failed': total_failed,
                 'policies': len(all_policies)
@@ -154,7 +154,7 @@ def main():
         with open('data/crawler_report_final.json', 'w', encoding='utf-8') as f:
             json.dump(final_report, f, ensure_ascii=False, indent=2)
 
-        logging.info(f"\n最终统计: {total_successful}/146 所大学成功，共 {len(all_policies)} 份政策")
+        logging.info(f"\n最终统计: {total_successful}/147 所大学成功，共 {len(all_policies)} 份政策")
     else:
         logging.info("\n✗ 第二轮未能爬取到新政策")
 

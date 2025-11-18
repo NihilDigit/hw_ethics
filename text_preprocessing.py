@@ -66,8 +66,8 @@ class TextPreprocessor:
         for word in custom_words:
             jieba.add_word(word)
 
-    def load_policies(self, filepath='data/policies.json'):
-        """加载政策数据"""
+    def load_policies(self, filepath='data/policies_cleaned_final.json'):
+        """加载政策数据(使用清洗后的数据)"""
         with open(filepath, 'r', encoding='utf-8') as f:
             return json.load(f)
 

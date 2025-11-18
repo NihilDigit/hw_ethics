@@ -1,0 +1,144 @@
+[
+  {
+    "university": "清华大学",
+    "category": "教学管理",
+    "dominant_topic_id": 2,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.5423109531402588,
+    "all_topics": [
+      [
+        1,
+        0.456405907869339
+      ],
+      [
+        2,
+        0.5423109531402588
+      ]
+    ]
+  },
+  {
+    "university": "北京大学",
+    "category": "教学管理",
+    "dominant_topic_id": 1,
+    "dominant_topic_label": "伦理与规范",
+    "dominant_topic_prob": 0.6298753023147583,
+    "all_topics": [
+      [
+        1,
+        0.6298753023147583
+      ],
+      [
+        2,
+        0.29972338676452637
+      ],
+      [
+        3,
+        0.07000014185905457
+      ]
+    ]
+  },
+  {
+    "university": "复旦大学",
+    "category": "伦理规范",
+    "dominant_topic_id": 1,
+    "dominant_topic_label": "伦理与规范",
+    "dominant_topic_prob": 0.9983110427856445,
+    "all_topics": [
+      [
+        1,
+        0.9983110427856445
+      ]
+    ]
+  },
+  {
+    "university": "浙江大学",
+    "category": "技术管理",
+    "dominant_topic_id": 2,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.997696042060852,
+    "all_topics": [
+      [
+        2,
+        0.997696042060852
+      ]
+    ]
+  },
+  {
+    "university": "上海交通大学",
+    "category": "教学改革",
+    "dominant_topic_id": 2,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.9984374642372131,
+    "all_topics": [
+      [
+        2,
+        0.9984374642372131
+      ]
+    ]
+  },
+  {
+    "university": "南京大学",
+    "category": "学生指导",
+    "dominant_topic_id": 1,
+    "dominant_topic_label": "伦理与规范",
+    "dominant_topic_prob": 0.9979602694511414,
+    "all_topics": [
+      [
+        1,
+        0.9979602694511414
+      ]
+    ]
+  },
+  {
+    "university": "中国人民大学",
+    "category": "教师指导",
+    "dominant_topic_id": 0,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.9982098340988159,
+    "all_topics": [
+      [
+        0,
+        0.9982098340988159
+      ]
+    ]
+  },
+  {
+    "university": "北京师范大学",
+    "category": "伦理规范",
+    "dominant_topic_id": 3,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.9981645345687866,
+    "all_topics": [
+      [
+        3,
+        0.9981645345687866
+      ]
+    ]
+  },
+  {
+    "university": "武汉大学",
+    "category": "科研管理",
+    "dominant_topic_id": 1,
+    "dominant_topic_label": "伦理与规范",
+    "dominant_topic_prob": 0.9988420605659485,
+    "all_topics": [
+      [
+        1,
+        0.9988420605659485
+      ]
+    ]
+  },
+  {
+    "university": "中山大学",
+    "category": "发展规划",
+    "dominant_topic_id": 2,
+    "dominant_topic_label": "教学应用与创新",
+    "dominant_topic_prob": 0.998778223991394,
+    "all_topics": [
+      [
+        2,
+        0.998778223991394
+      ]
+    ]
+  }
+]

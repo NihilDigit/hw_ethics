@@ -1,0 +1,62 @@
+[
+  {
+    "date": "2023-04-25",
+    "university": "南京大学",
+    "topic": "伦理与规范",
+    "topic_id": 1
+  },
+  {
+    "date": "2023-05-15",
+    "university": "清华大学",
+    "topic": "教学应用与创新",
+    "topic_id": 2
+  },
+  {
+    "date": "2023-06-20",
+    "university": "北京大学",
+    "topic": "伦理与规范",
+    "topic_id": 1
+  },
+  {
+    "date": "2023-07-10",
+    "university": "复旦大学",
+    "topic": "伦理与规范",
+    "topic_id": 1
+  },
+  {
+    "date": "2023-08-05",
+    "university": "浙江大学",
+    "topic": "教学应用与创新",
+    "topic_id": 2
+  },
+  {
+    "date": "2023-09-12",
+    "university": "上海交通大学",
+    "topic": "教学应用与创新",
+    "topic_id": 2
+  },
+  {
+    "date": "2023-10-08",
+    "university": "中国人民大学",
+    "topic": "教学应用与创新",
+    "topic_id": 0
+  },
+  {
+    "date": "2023-11-15",
+    "university": "北京师范大学",
+    "topic": "教学应用与创新",
+    "topic_id": 3
+  },
+  {
+    "date": "2023-12-01",
+    "university": "武汉大学",
+    "topic": "伦理与规范",
+    "topic_id": 1
+  },
+  {
+    "date": "2024-01-20",
+    "university": "中山大学",
+    "topic": "教学应用与创新",
+    "topic_id": 2
+  }
+]

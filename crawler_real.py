@@ -47,14 +47,16 @@ class RealUniversityPolicyCrawler:
         self.universities = universities_dict
         self.delay = delay
 
-        # 搜索关键词组合
+        # 搜索关键词组合（优化后更精准）
         self.keywords = [
-            '生成式人工智能 政策',
+            '生成式人工智能 使用规定',
             '生成式人工智能 管理办法',
-            'ChatGPT 使用规定',
-            '人工智能 教学管理',
-            'AI 使用规范',
-            '大语言模型 管理',
+            'ChatGPT 使用 规定',
+            '人工智能 使用 管理',
+            'AI工具 使用规范',
+            '生成式AI 管理规定',
+            '大语言模型 使用 管理',
+            '人工智能 伦理',
         ]
 
         self.policies = []

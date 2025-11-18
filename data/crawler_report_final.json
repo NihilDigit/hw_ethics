@@ -1,9 +1,23 @@
 {
-  "crawl_time": "2025-11-18 03:58:21",
-  "total_universities": 77,
-  "successful": 8,
-  "failed": 69,
-  "failed_list": [
+  "crawl_time": "未知",
+  "round_1": {
+    "successful": 69,
+    "failed": 77,
+    "policies": 107
+  },
+  "round_2": {
+    "attempted": 77,
+    "successful": 8,
+    "still_failed": 69,
+    "new_policies": 8
+  },
+  "total": {
+    "universities": 146,
+    "successful": 77,
+    "failed": 69,
+    "policies": 16
+  },
+  "still_failed_list": [
     "北京理工大学",
     "北京邮电大学",
     "北京协和医学院",
@@ -73,6 +87,5 @@
     "中国地质大学（北京）",
     "国防科技大学",
     "海军军医大学"
-  ],
-  "total_policies": 8
+  ]
 }

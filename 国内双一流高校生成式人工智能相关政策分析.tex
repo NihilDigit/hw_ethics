@@ -8,6 +8,7 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{wrapfig}
 
 \geometry{a4paper,left=2.5cm,right=2.5cm,top=3cm,bottom=3cm}
 
@@ -129,7 +130,7 @@ AI & 100 & 发展 & 39 & 问题 & 30 \\
 
 \subsection{LDA主题模型分析}
 
-使用LDA模型提取5个主题,每个主题的关键词及其概率分布如表\ref{tab:lda-topics}所示。
+使用LDA模型提取5个主题,每个主题的关键词及其概率分布如表\ref{tab:lda-topics}所示。图\ref{fig:lda-topics}展示了各主题的关键词概率分布。
 
 \begin{table}[H]
 \centering
@@ -153,6 +154,13 @@ AI & 100 & 发展 & 39 & 问题 & 30 \\
 \end{tabular}
 \end{table}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/lda_topics_bar.png}
+\caption{LDA主题关键词概率分布}
+\label{fig:lda-topics}
+\end{figure}
+
 主题分析显示:
 
 \begin{itemize}
@@ -167,16 +175,23 @@ AI & 100 & 发展 & 39 & 问题 & 30 \\
 \item \textbf{主题4(课程教学赋能):} 强调AI赋能课程教学,关注教授培训和使用指南制定,体现政策对教学质量提升和教师能力发展的关注。
 \end{itemize}
 
-文档主题分布统计显示:主题2和主题4(课程项目与教学赋能)占比最高,共8篇文档(47.1\%);主题1(服务与应用)5篇(29.4\%);主题3(平台素养培育)3篇(17.6\%);主题0(教学监管探索)1篇(5.9\%)。这表明高校政策以课程建设和教学应用创新为主导,同时兼顾服务规范和平台建设。
-
-\subsection{语义网络分析}
-
-基于加权共现矩阵构建的语义网络包含49个节点和50条边,网络密度为0.0425,平均聚类系数为0.1763。图\ref{fig:network}展示了共现网络的可视化结果。
+如图\ref{fig:topic-dist}所示,文档主题分布统计显示:主题2和主题4(课程项目与教学赋能)占比最高,共8篇文档(47.1\%);主题1(服务与应用)5篇(29.4\%);主题3(平台素养培育)3篇(17.6\%);主题0(教学监管探索)1篇(5.9\%)。这表明高校政策以课程建设和教学应用创新为主导,同时兼顾服务规范和平台建设。
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/cooccurrence_network.png}
-\caption{政策关键词共现网络图(Top 50边)}
+\includegraphics[width=0.75\textwidth]{figures/topic_distribution.png}
+\caption{文档主题分布}
+\label{fig:topic-dist}
+\end{figure}
+
+\subsection{语义网络分析}
+
+基于加权共现矩阵构建的语义网络包含45个节点和50条边,网络密度为0.0505,平均聚类系数为0.1385。图\ref{fig:network}展示了共现网络的可视化结果,节点大小表示度中心性,颜色深度表示介数中心性,仅标注了Top 20的核心节点以保持图表清晰度。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/cooccurrence_network.png}
+\caption{政策关键词共现网络图(Top 50边)。节点大小基于度中心性,颜色基于介数中心性,标注显示网络中最重要的20个概念节点。}
 \label{fig:network}
 \end{figure}
 
@@ -204,9 +219,22 @@ AI & 100 & 发展 & 39 & 问题 & 30 \\
 \item \textbf{教学创新模式:} "教学改革-项目"、"智课-项目"、"课程-项目"等共现体现AI技术与课程建设、教学改革的深度结合。
 \end{itemize}
 
+\subsection{关键词聚类分析}
+
+图\ref{fig:keyword-clusters}展示了基于PCA降维和K-means聚类的关键词语义簇分布。聚类分析识别出5个主要语义簇,每个簇代表政策文本中的一组语义相关的概念。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/keyword_clusters.png}
+\caption{关键词聚类分析。使用PCA降维到2维空间,通过K-means算法识别出5个语义簇,不同颜色代表不同的概念群组。}
+\label{fig:keyword-clusters}
+\end{figure}
+
+聚类结果表明,政策关键词形成了相对独立但又相互关联的语义群组,这些群组分别对应教学应用、技术服务、项目管理、平台建设和能力培养等不同的政策关注领域。
+
 \subsection{按类别分析}
 
-表\ref{tab:category-keywords}展示了不同类别政策的关键词分布差异。
+表\ref{tab:category-keywords}展示了不同类别政策的关键词分布差异。图\ref{fig:category-heatmap}以热力图形式直观展示了各类别政策的关键词频次分布。
 
 \begin{table}[H]
 \centering
@@ -230,6 +258,13 @@ AI & 100 & 发展 & 39 & 问题 & 30 \\
 \end{tabular}
 \end{table}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/category_keywords_heatmap.png}
+\caption{政策类别-关键词频次热力图。展示不同类别政策在关键词使用上的差异,颜色越深表示频次越高。}
+\label{fig:category-heatmap}
+\end{figure}
+
 类别差异分析:
 \begin{itemize}
 \item \textbf{教学管理类:} 关注"教育"、"教学"、"课程"、"工具",体现AI技术在教学场景中的应用导向,强调通过技术工具提升教育教学质量。
@@ -241,7 +276,14 @@ AI & 100 & 发展 & 39 & 问题 & 30 \\
 
 \subsection{政策演化趋势}
 
-通过时间序列分析政策发布情况和主题分布,发现以下演化趋势:
+通过时间序列分析政策发布情况和主题分布,发现以下演化趋势。图\ref{fig:topic-evolution}展示了政策主题随时间的演化轨迹。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/topic_evolution.png}
+\caption{政策主题时间演化图。展示不同主题政策的发布时间分布,反映政策关注点的演变趋势。}
+\label{fig:topic-evolution}
+\end{figure}
 
 \textbf{时间分布特征:} 2024年是政策发布高峰期,共9份政策集中发布(52.9\%),2025年有4份政策(23.5\%),反映2024年前后是高校集中应对生成式AI的关键时期。
 
@@ -342,27 +384,5 @@ AI & 100 & 发展 & 39 & 问题 & 30 \\
 \bibitem{ref10} 穆卫军. 新时代我国高等学历继续教育政策文本的语义网络分析[J]. 继续教育研究, 2023.
 
 \end{thebibliography}
-
-\appendix
-
-\section{附录:可视化图表}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{figures/topic_distribution.png}
-\caption{文档主题分布饼图}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/category_keywords_heatmap.png}
-\caption{政策类别-关键词热力图}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/lda_topics_bar.png}
-\caption{LDA主题关键词分布}
-\end{figure}
 
 \end{document}

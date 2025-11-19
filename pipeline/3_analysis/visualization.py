@@ -18,6 +18,18 @@ import os
 from matplotlib.font_manager import FontProperties, fontManager
 import matplotlib.patches as mpatches
 
+# 注册思源黑体字体
+font_path = os.path.join(os.path.dirname(__file__), '..', '..', 'fonts', 'SourceHanSansSC-Regular.otf')
+font_path_bold = os.path.join(os.path.dirname(__file__), '..', '..', 'fonts', 'SourceHanSansSC-Bold.otf')
+
+if os.path.exists(font_path):
+    # 添加字体到系统
+    fontManager.addfont(font_path)
+    fontManager.addfont(font_path_bold)
+    print("✓ 成功加载思源黑体字体")
+else:
+    print("⚠ 警告: 未找到思源黑体字体，使用默认字体")
+
 # 设置现代化样式
 plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
@@ -26,7 +38,7 @@ sns.set_palette("husl")
 plt.rcParams.update({
     # 字体设置
     'font.family': 'sans-serif',
-    'font.sans-serif': ['DejaVu Sans', 'Arial', 'Helvetica'],
+    'font.sans-serif': ['Source Han Sans SC', 'DejaVu Sans', 'Arial', 'Helvetica'],
     'font.size': 11,
     'axes.labelsize': 12,
     'axes.titlesize': 14,

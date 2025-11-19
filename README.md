@@ -42,7 +42,7 @@ hw_ethics/
 │   ├── 1_crawler/                      # 阶段1: 数据爬取
 │   │   ├── crawler_real.py             # 真实爬虫（使用搜索引擎）
 │   │   ├── crawler_retry_failed.py     # 失败重试脚本
-│   │   └── universities_list.py        # 145所双一流高校名单
+│   │   └── universities_list.py        # 147所双一流高校名单
 │   ├── 2_cleaning/                     # 阶段2: 数据清洗
 │   │   ├── data_cleaner_v2.py          # 数据清洗脚本
 │   │   └── post_clean_manual.py        # 手动清洗脚本
@@ -289,7 +289,7 @@ python3 scripts/rebuild_policies.py
 
 ## 双一流高校覆盖
 
-项目包含完整的**145所双一流大学名单**（见 `pipeline/1_crawler/universities_list.py`），包含：
+项目包含完整的**147所双一流大学名单**（见 `pipeline/1_crawler/universities_list.py`），包含：
 - 北京地区30所、上海地区15所、江苏地区16所等
 - 涵盖985、211及新晋双一流高校
 - 每所高校配置官网地址
@@ -352,7 +352,7 @@ python3 scripts/rebuild_policies.py
 5. ✅ **论文优化**: LaTeX论文结构完整，图表嵌入正文而非附录
 6. ✅ **文档详尽**: 完善的文档体系，包含快速开始、技术文档、工具说明
 7. ✅ **真实爬虫**: 实现完整的爬虫框架，支持真实数据采集
-8. ✅ **全面覆盖**: 包含145所双一流大学完整名单，可扩展性强
+8. ✅ **全面覆盖**: 包含147所双一流大学完整名单，可扩展性强
 9. ✅ **清洁流水线**: 整理完整的数据处理流水线，结构清晰，易于维护
 
 ## 致谢

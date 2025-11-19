@@ -342,10 +342,6 @@ python3 scripts/rebuild_policies.py
 
 本项目仅用于学术研究和教育目的。
 
----
-
-**项目完成时间**: 2024年11月
-
 **主要技术栈**: Python, jieba, gensim, scikit-learn, networkx, matplotlib, beautifulsoup4, requests, LaTeX
 
 **联系方式**: 如有问题请通过GitHub Issues联系

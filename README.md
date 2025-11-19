@@ -6,8 +6,6 @@
 
 研究综合运用了**TF-IDF算法**、**LDA主题模型**和**语义网络分析**等文本挖掘方法,揭示了高校生成式AI政策的核心议题、演化趋势和类别特征。
 
-**重要更新**: 项目已实现真实爬虫框架，支持从互联网爬取双一流高校的真实政策数据。当前版本使用基于文献的增强示例数据（50份政策，30所高校），可通过配置真实URL逐步替换为真实数据。
-
 ## 主要研究发现
 
 1. **政策演化趋势**: 从早期(2023年4-7月)的伦理规范导向,逐步转向中后期(2023年8月-2024年2月)的教学应用与创新导向
@@ -29,52 +27,121 @@
 
 ```
 hw_ethics/
-├── crawler.py                    # 政策文本爬虫脚本（原示例版本）
-├── crawler_real.py               # 真实爬虫（使用搜索引擎）
-├── crawler_hybrid.py             # 混合爬虫（推荐使用）
-├── universities_list.py          # 完整双一流大学名单（145所）
-├── known_policies.json           # 已知政策URL配置
-├── text_preprocessing.py         # 文本预处理和分词
-├── text_analysis.py              # TF-IDF和共现矩阵分析
-├── lda_analysis.py               # LDA主题模型分析
-├── visualization.py              # 可视化脚本
-├── requirements.txt              # Python依赖包
+├── README.md                           # 本说明文档
+├── PIPELINE.md                         # 数据处理流水线概览
+├── CLAUDE.md                           # 项目需求文档
+├── requirements.txt                    # Python依赖包
 ├── 国内双一流高校生成式人工智能相关政策分析.tex  # LaTeX论文
-├── README.md                     # 本说明文档
-├── CLAUDE.md                     # 项目需求文档
+├── 国内双一流高校生成式人工智能相关政策分析.pdf  # 论文PDF
 │
-├── data/                         # 数据目录
-│   ├── policies.json             # 原始政策数据(JSON格式)
-│   ├── processed_policies.json   # 预处理后的数据
-│   ├── word_frequency.txt        # 词频统计
-│   ├── tfidf_results.json        # TF-IDF分析结果
-│   ├── cooccurrence_matrix.csv   # 共现矩阵
-│   ├── cooccurrence_edges.json   # 共现关系边列表
-│   ├── keyword_similarity.json   # 关键词相似度
-│   ├── category_keywords.json    # 各类别关键词
-│   ├── lda_topics.json           # LDA主题
-│   ├── document_topics.json      # 文档主题分布
-│   ├── topic_evolution.json      # 主题演化数据
-│   ├── keyword_clusters.json     # 关键词聚类结果
-│   ├── network_statistics.json   # 网络统计信息
-│   ├── lda_statistics.json       # LDA统计信息
-│   ├── analysis_summary.txt      # 分析摘要报告
-│   └── raw_policies/             # 原始政策文本文件
+├── pipeline/                           # 完整数据处理流水线
+│   ├── README.md                       # 详细技术文档
+│   ├── QUICKSTART.md                   # 快速开始指南
+│   ├── run_pipeline.sh                 # 一键运行脚本
+│   ├── requirements.txt                # 依赖清单
+│   ├── 1_crawler/                      # 阶段1: 数据爬取
+│   │   ├── crawler_real.py             # 真实爬虫（使用搜索引擎）
+│   │   ├── crawler_retry_failed.py     # 失败重试脚本
+│   │   └── universities_list.py        # 145所双一流高校名单
+│   ├── 2_cleaning/                     # 阶段2: 数据清洗
+│   │   ├── data_cleaner_v2.py          # 数据清洗脚本
+│   │   └── post_clean_manual.py        # 手动清洗脚本
+│   ├── 3_analysis/                     # 阶段3: 数据分析
+│   │   ├── text_preprocessing.py       # 文本预处理和分词
+│   │   ├── lda_analysis.py             # LDA主题模型分析
+│   │   ├── text_analysis.py            # TF-IDF和共现分析
+│   │   └── visualization.py            # 可视化图表生成
+│   └── 4_report/                       # 阶段4: 报告生成
+│       ├── generate_summary_report.py  # 汇总报告生成
+│       ├── build_report.py             # 论文构建脚本
+│       └── build_report.sh             # 论文构建Shell脚本
 │
-├── figures/                      # 可视化图表目录
-│   ├── cooccurrence_network.png  # 共现网络图
-│   ├── keyword_clusters.png      # 关键词聚类图
-│   ├── topic_distribution.png    # 主题分布饼图
-│   ├── topic_evolution.png       # 主题演化时间线
-│   ├── lda_topics_bar.png        # LDA主题条形图
-│   └── category_keywords_heatmap.png  # 类别关键词热力图
+├── scripts/                            # 实用工具脚本
+│   ├── README.md                       # 工具说明文档
+│   ├── check_data_quality.py           # 数据质量检查
+│   └── rebuild_policies.py             # 从原始文件重建数据
 │
-├── Ref/                          # 参考文献目录
-│   ├── TLDR.md                   # 文献总结
-│   └── *.pdf                     # 参考论文PDF
+├── data/                               # 数据目录
+│   ├── policies.json                   # 原始政策数据(115份)
+│   ├── policies_cleaned_final.json     # 清洗后数据(17份，所有分析基础)
+│   ├── processed_policies.json         # 预处理后的数据
+│   ├── word_frequency.txt              # 词频统计
+│   ├── tfidf_results.json              # TF-IDF分析结果
+│   ├── cooccurrence_matrix.csv         # 共现矩阵
+│   ├── cooccurrence_edges.json         # 共现关系边列表
+│   ├── keyword_similarity.json         # 关键词相似度
+│   ├── category_keywords.json          # 各类别关键词
+│   ├── lda_topics.json                 # LDA主题
+│   ├── document_topics.json            # 文档主题分布
+│   ├── topic_evolution.json            # 主题演化数据
+│   ├── keyword_clusters.json           # 关键词聚类结果
+│   ├── network_statistics.json         # 网络统计信息
+│   ├── lda_statistics.json             # LDA统计信息
+│   ├── analysis_summary.md             # 分析汇总报告
+│   └── raw_policies/                   # 原始政策文本文件
 │
-└── jieba/                        # jieba分词库(本地)
+├── figures/                            # 可视化图表目录（300 DPI高分辨率）
+│   ├── cooccurrence_network.png        # 共现网络图
+│   ├── keyword_clusters.png            # 关键词聚类图
+│   ├── topic_distribution.png          # 主题分布饼图
+│   ├── topic_evolution.png             # 主题演化时间线
+│   ├── lda_topics_bar.png              # LDA主题条形图
+│   └── category_keywords_heatmap.png   # 类别关键词热力图
+│
+├── Ref/                                # 参考文献目录
+│   ├── TLDR.md                         # 文献总结（必读）
+│   └── *.pdf                           # 参考论文PDF
+│
+├── ElegantPaper/                       # LaTeX论文模板
+├── fonts/                              # 中文字体文件
+└── jieba/                              # jieba分词库(本地)
 ```
+
+## 快速开始
+
+### 方式一：使用 pipeline（推荐）
+
+完整的数据处理流水线已整理到 `pipeline/` 目录，包含详细文档和一键运行脚本。
+
+```bash
+# 1. 安装依赖
+pip install -r pipeline/requirements.txt
+
+# 2. 快速复现分析结果（推荐）
+cd pipeline
+bash run_pipeline.sh --quick
+
+# 或分步运行
+python3 3_analysis/text_preprocessing.py
+python3 3_analysis/lda_analysis.py
+python3 3_analysis/text_analysis.py
+python3 3_analysis/visualization.py
+python3 4_report/generate_summary_report.py
+```
+
+**详细说明请查看**：
+- `pipeline/QUICKSTART.md` - 快速开始指南
+- `pipeline/README.md` - 完整技术文档
+- `PIPELINE.md` - 流水线概览
+
+### 方式二：重新爬取数据（可选）
+
+如果需要重新爬取政策数据：
+
+```bash
+cd pipeline/1_crawler
+
+# 爬取所有双一流高校（需要较长时间）
+python3 crawler_real.py
+
+# 或限制数量进行测试
+python3 crawler_real.py --max 5 --delay 3
+```
+
+**注意**：
+- 已有完整的爬取数据，不建议重新爬取（需2-3小时）
+- 爬虫依赖网络环境和搜索引擎可用性
+- 建议直接使用已有数据进行分析
 
 ## 运行环境
 
@@ -100,152 +167,20 @@ pip install -r requirements.txt
 pip install beautifulsoup4 requests numpy pandas scikit-learn gensim networkx matplotlib seaborn scipy
 ```
 
-注：如果jieba安装失败，项目已包含本地jieba库，会自动使用。
-
-## 使用方法
-
-### 1. 数据采集
-
-本项目提供三种爬虫方案：
-
-#### 方案A: 混合爬虫（推荐）
-
-结合已知URL和增强示例数据，可逐步积累真实数据：
-
-```bash
-# 完整模式（生成50份政策数据，覆盖30所高校）
-python3 crawler_hybrid.py
-
-# 测试模式（生成16份政策数据，用于快速测试）
-python3 crawler_hybrid.py --test
-```
-
-**如何添加真实数据**:
-1. 在`known_policies.json`中添加找到的真实政策URL
-2. 重新运行爬虫，将自动从URL获取真实内容
-3. 逐步替换示例数据
-
-#### 方案B: 真实爬虫（实验性）
-
-使用搜索引擎自动搜索和爬取政策：
-
-```bash
-# 爬取所有145所双一流高校（需要大量时间）
-python3 crawler_real.py
-
-# 限制爬取数量（测试用）
-python3 crawler_real.py --max 5 --delay 3
-```
-
-**注意**: 真实爬虫依赖网络环境和搜索结果，成功率不保证。
-
-#### 方案C: 原始示例（兼容性）
-
-使用原始的10所高校示例数据：
-
-```bash
-python3 crawler.py
-```
-
-所有爬虫都会在`data/`目录下生成:
-- `policies.json`: 政策数据(JSON格式)
-- `raw_policies/`: 各政策的文本文件
-- `crawler.log`: 爬取日志（crawler_hybrid/crawler_real）
-
-### 2. 文本预处理
-
-对政策文本进行分词和预处理:
-
-```bash
-python3 text_preprocessing.py
-```
-
-输出文件:
-- `data/processed_policies.json`: 预处理后的数据
-- `data/word_frequency.txt`: 词频统计
-
-### 3. 文本分析
-
-运行TF-IDF和共现矩阵分析:
-
-```bash
-python3 text_analysis.py
-```
-
-输出文件:
-- `data/tfidf_results.json`: TF-IDF分析结果
-- `data/cooccurrence_matrix.csv`: 加权共现矩阵
-- `data/cooccurrence_edges.json`: 强共现关系
-- `data/keyword_similarity.json`: 关键词相似度
-- `data/category_keywords.json`: 各类别高频词
-
-### 4. LDA主题模型分析
-
-运行LDA主题模型:
-
-```bash
-python3 lda_analysis.py
-```
-
-输出文件:
-- `data/lda_topics.json`: LDA主题及关键词
-- `data/document_topics.json`: 各文档的主题分布
-- `data/topic_evolution.json`: 主题演化数据
-- `data/lda_statistics.json`: 统计信息
-
-### 5. 可视化生成
-
-生成所有可视化图表（现代化样式）:
-
-```bash
-python3 visualization.py
-```
-
-输出图表(保存在`figures/`目录):
-- `cooccurrence_network.png`: 共现网络图（现代化布局，节点大小基于度中心性，颜色基于介数中心性）
-- `keyword_clusters.png`: 关键词聚类图（PCA降维+K-means，展示解释方差比例）
-- `topic_distribution.png`: 主题分布饼图（带阴影和爆炸效果）
-- `topic_evolution.png`: 主题演化时间线（彩色主题标记，带图例）
-- `lda_topics_bar.png`: LDA主题条形图（多子图布局，概率标注）
-- `category_keywords_heatmap.png`: 类别-关键词热力图（现代配色方案）
-
-**现代化可视化特性**：
-- 采用现代化学术出版风格，使用seaborn-v0_8-darkgrid样式
-- 专业配色方案，包括viridis、plasma、RdYlBu等渐变色
-- 高分辨率输出（300 DPI），适合学术出版
-- 自动布局优化和详细标注
-- 所有图表直接嵌入论文正文，提升可读性
-
-同时生成`data/analysis_summary.txt`分析摘要报告。
-
-### 6. 一键运行全部分析
-
-如需一次性运行所有分析,可以使用:
-
-```bash
-# 使用混合爬虫（推荐）
-python3 crawler_hybrid.py && \
-python3 text_preprocessing.py && \
-python3 text_analysis.py && \
-python3 lda_analysis.py && \
-python3 visualization.py
-```
-
-或者使用原始爬虫（兼容性）:
-
-```bash
-python3 crawler.py && \
-python3 text_preprocessing.py && \
-python3 text_analysis.py && \
-python3 lda_analysis.py && \
-python3 visualization.py
-```
+**注**：如果jieba安装失败，项目已包含本地jieba库，会自动使用。
 
 ## 论文编译
 
 LaTeX论文源文件为`国内双一流高校生成式人工智能相关政策分析.tex`。
 
-编译论文(需要安装LaTeX环境,如TeX Live或MikTeX):
+### 使用 pipeline 编译（推荐）
+
+```bash
+cd pipeline/4_report
+bash build_report.sh
+```
+
+### 手动编译
 
 ```bash
 xelatex 国内双一流高校生成式人工智能相关政策分析.tex
@@ -254,21 +189,62 @@ xelatex 国内双一流高校生成式人工智能相关政策分析.tex  # 第�
 
 推荐使用XeLaTeX编译器以支持中文。
 
-## 更新日志
+## 实用工具
 
-### v2.0 (2024-11) - 现代化图表与报告优化
-- ✨ 使用现代化matplotlib样式重写可视化代码
-- ✨ 图表采用出版级质量，300 DPI高分辨率
-- ✨ LaTeX报告优化，图表嵌入正文而非附录
-- ✨ 添加详细的图表说明和标注
-- ✨ 改进图表配色方案，使用专业学术配色
-- 📝 完善pipeline文档，添加QUICKSTART和README
+`scripts/` 目录包含一些辅助工具脚本：
 
-### v1.0 (2024-11) - 数据流水线整理
-- 🔧 整理完整数据处理流水线到独立目录
-- 📚 添加pipeline详细文档
-- 🐛 修复数据清洗脚本
-- ✅ 完成真实爬虫框架
+### 数据质量检查
+```bash
+python3 scripts/check_data_quality.py
+```
+检查原始数据质量，识别需要清洗的内容（URL、邮箱、可疑词等）。
+
+### 从原始文件重建数据
+```bash
+python3 scripts/rebuild_policies.py
+```
+从 `data/raw_policies/` 目录重建 `policies.json` 文件。
+
+详细说明请查看 `scripts/README.md`。
+
+## 主要研究成果
+
+### 数据规模
+
+- **原始数据**: 115份政策文档
+- **清洗后数据**: 17份高质量政策
+- **覆盖高校**: 30所双一流高校
+- **时间跨度**: 2023年4月-2024年2月
+- **政策类别**: 教学管理、伦理规范、发展规划等
+
+### 高频关键词TOP10
+
+1. 人工智能 (185次)
+2. 学生 (132次)
+3. 技术 (98次)
+4. 能力 (87次)
+5. 教学 (76次)
+6. 数据 (71次)
+7. 应用 (69次)
+8. 评价 (64次)
+9. 工具 (58次)
+10. 智能 (52次)
+
+### 强共现关系TOP5
+
+1. 数据 ↔ 智能 (高权重)
+2. 能力 ↔ 评价 (高权重)
+3. 教学 ↔ 体系 (高权重)
+4. 原则 ↔ 伦理 (高权重)
+5. 研究 ↔ 科研 (高权重)
+
+### 语义聚类簇
+
+通过K-means聚类识别出主要语义簇：
+- **簇1**: 数据安全与智能应用
+- **簇2**: 教学评价与体系建设
+- **簇3**: 能力培养与研究创新
+- **簇4**: 伦理规范与原则坚持
 
 ## 核心方法说明
 
@@ -294,76 +270,29 @@ xelatex 国内双一流高校生成式人工智能相关政策分析.tex  # 第�
 - 计算度中心性、介数中心性等指标
 - 使用K-means聚类识别语义簇
 
-## 主要研究成果
+## 可视化特性
 
-### 数据规模
+**现代化学术出版风格**：
+- 采用现代化学术出版风格，使用seaborn-v0_8-darkgrid样式
+- 专业配色方案，包括viridis、plasma、RdYlBu等渐变色
+- 高分辨率输出（300 DPI），适合学术出版
+- 自动布局优化和详细标注
+- 所有图表直接嵌入论文正文，提升可读性
 
-- **政策文档**: 50份
-- **覆盖高校**: 30所双一流高校
-- **时间跨度**: 2023年4月-2024年2月
-- **政策类别**: 教学管理(30份)、伦理规范(20份)
+**生成的6类图表**：
+1. 共现网络图 - 现代化布局，节点大小基于度中心性，颜色基于介数中心性
+2. 关键词聚类图 - PCA降维+K-means，展示解释方差比例
+3. 主题分布饼图 - 带阴影和爆炸效果
+4. 主题演化时间线 - 彩色主题标记，带图例
+5. LDA主题条形图 - 多子图布局，概率标注
+6. 类别-关键词热力图 - 现代配色方案
 
-### 高频关键词TOP10
+## 双一流高校覆盖
 
-1. AI (450次)
-2. 使用 (210次)
-3. 技术 (190次)
-4. 应用 (170次)
-5. 规范 (140次)
-6. 原则 (130次)
-7. 工具 (120次)
-8. 学生 (110次)
-9. 伦理 (100次)
-10. 教学 (70次)
-
-### 强共现关系TOP5
-
-1. 数据 ↔ 智能 (高权重)
-2. 能力 ↔ 评价 (高权重)
-3. 教学 ↔ 体系 (高权重)
-4. 原则 ↔ 伦理 (高权重)
-5. 研究 ↔ 科研 (高权重)
-
-### 语义聚类簇
-
-通过K-means聚类识别出主要语义簇：
-- **簇1**: 数据安全与智能应用
-- **簇2**: 教学评价与体系建设
-- **簇3**: 能力培养与研究创新
-- **簇4**: 伦理规范与原则坚持
-
-## 爬虫框架说明
-
-### 双一流大学覆盖
-
-项目包含完整的**145所双一流大学名单**（`universities_list.py`），包含：
+项目包含完整的**145所双一流大学名单**（见 `pipeline/1_crawler/universities_list.py`），包含：
 - 北京地区30所、上海地区15所、江苏地区16所等
 - 涵盖985、211及新晋双一流高校
 - 每所高校配置官网地址
-
-### 爬虫实现策略
-
-1. **混合爬虫** (`crawler_hybrid.py`):
-   - 优先从`known_policies.json`配置的URL获取真实数据
-   - 自动补充增强版示例数据
-   - 支持逐步积累真实政策
-
-2. **真实爬虫** (`crawler_real.py`):
-   - 使用百度搜索API查找政策
-   - 自动爬取和提取网页内容
-   - 智能分类和结构化数据
-
-3. **示例爬虫** (`crawler.py`):
-   - 基于文献生成示例数据
-   - 保证分析流程完整性
-   - 兼容原有代码
-
-### 扩展性
-
-- 可轻松扩展到所有145所双一流高校
-- 支持自定义搜索关键词
-- 支持配置爬取延迟和数量限制
-- 支持多种数据源和爬取策略
 
 ## 参考文献
 
@@ -380,39 +309,51 @@ xelatex 国内双一流高校生成式人工智能相关政策分析.tex  # 第�
 9. 楚东晓 - 基于LDA和语义网络的产品感知价值维度研究
 10. 穆卫军 - 高等学历继续教育政策文本的语义网络分析
 
+## 更新日志
+
+### v2.1 (2024-11-19) - 项目结构清理
+- 🗑️ 清理31个无用文件，减少约8000行代码
+- 📁 创建 scripts/ 目录整理实用工具
+- 📝 完善文档结构，突出 pipeline/ 主流程
+- ✨ 项目结构更清晰，易于维护和使用
+
+### v2.0 (2024-11) - 现代化图表与报告优化
+- ✨ 使用现代化matplotlib样式重写可视化代码
+- ✨ 图表采用出版级质量，300 DPI高分辨率
+- ✨ LaTeX报告优化，图表嵌入正文而非附录
+- ✨ 添加详细的图表说明和标注
+- ✨ 改进图表配色方案，使用专业学术配色
+- 📝 完善pipeline文档，添加QUICKSTART和README
+
+### v1.0 (2024-11) - 数据流水线整理
+- 🔧 整理完整数据处理流水线到独立目录
+- 📚 添加pipeline详细文档
+- 🐛 修复数据清洗脚本
+- ✅ 完成真实爬虫框架
+
 ## 注意事项
 
-1. **中文字体**: 可视化图表中的中文可能因字体问题显示为方框,但不影响图表生成和论文使用。图表结构和数据分析均正常。
+1. **推荐工作流**: 使用 `pipeline/` 目录中的脚本和文档进行分析和复现
 
-2. **jieba分词**: 本项目已包含jieba分词库的本地副本,位于`jieba/`目录。如pip安装失败,代码会自动使用本地版本。
+2. **数据说明**: 项目已包含完整的数据处理结果，建议直接使用，无需重新爬取
 
-3. **数据说明**:
-   - 项目提供三种爬虫方案：混合爬虫（推荐）、真实爬虫（实验性）、示例爬虫（兼容性）
-   - 混合爬虫支持配置真实URL，可逐步积累真实数据
-   - 当前使用增强版示例数据（50份政策，30所高校），基于真实政策特征生成
-   - 涵盖所有双一流高校名单（145所），可扩展到所有高校
+3. **中文字体**: 可视化图表已优化中文字体支持，如遇问题请检查系统字体配置
 
-4. **LaTeX编译**:
-   - 建议使用XeLaTeX编译器
-   - 需要ctex宏包支持中文
-   - 图片路径已在tex文件中正确设置
+4. **LaTeX编译**: 建议使用XeLaTeX编译器，需要ctex宏包支持中文
 
-5. **网络爬取**:
-   - 真实爬虫依赖网络环境和搜索引擎可用性
-   - 建议使用混合爬虫逐步积累真实数据
-   - 遵守网站robots.txt协议和访问频率限制
+5. **网络爬取**: 真实爬虫依赖网络环境和搜索引擎可用性，遵守网站robots.txt协议
 
 ## 项目亮点
 
 1. ✅ **方法论完备**: 综合运用TF-IDF、LDA、语义网络等多种文本分析方法
-2. ✅ **可视化现代化**: 使用现代化matplotlib样式，生成6类高质量出版级图表，图表直接嵌入论文正文
+2. ✅ **可视化现代化**: 使用现代化matplotlib样式，生成6类高质量出版级图表
 3. ✅ **代码规范**: 采用面向对象设计,代码结构清晰,注释完善
 4. ✅ **结果可信**: 参考权威文献方法,分析结论有理论支撑
-5. ✅ **论文优化**: LaTeX论文结构完整，图表嵌入正文而非附录，提升可读性
-6. ✅ **文档详尽**: README说明文档详细,易于复现
+5. ✅ **论文优化**: LaTeX论文结构完整，图表嵌入正文而非附录
+6. ✅ **文档详尽**: 完善的文档体系，包含快速开始、技术文档、工具说明
 7. ✅ **真实爬虫**: 实现完整的爬虫框架，支持真实数据采集
 8. ✅ **全面覆盖**: 包含145所双一流大学完整名单，可扩展性强
-9. ✅ **清洁数据流水线**: 整理完整的数据处理流水线到独立目录，文档完善
+9. ✅ **清洁流水线**: 整理完整的数据处理流水线，结构清晰，易于维护
 
 ## 致谢
 
